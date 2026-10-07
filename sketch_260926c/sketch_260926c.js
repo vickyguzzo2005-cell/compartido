@@ -10,6 +10,21 @@ let indicevelma=0
 let velocidadcaminarvelma=1.9
 let tiempovelma
 let posicionxvelma=200;
+let textoPandilla = [
+  "¿Que ocurrio?",
+  "Disculpe señor,¿Usted sabe algo de lo que ocurrio?",
+  "¿Insinua que alguién se hizo pasar por él?",
+];
+let textoPolicia = [
+  "Mataron al payaso del circo tirandole un cuchillo directo a su cabeza",
+  "Ya interrogamos a todas las personas del publico y a los trabahjadores. Aunque no dijeron nada relevante",
+  "Solo falto el señor que limpia",
+];
+let textoSeñor = [
+  "Lo unico que se es que el payaso plinplin no estaba actuando como siempre, no parecia él",
+  "No lo insinuo, lo se. Han estado pasando cosas raras estos días, cómo el tipo raro que se fue por haya"
+];
+
 function preload(){fondo = loadImage('assets/fondoferia.png');
 
 for(let i = 0; i < 9; i++) {
