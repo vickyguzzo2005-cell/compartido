@@ -1,5 +1,6 @@
 let velocidadAnimacion = 90;
-let fondo;
+let fondo; //primer fondo
+let fondoB; //fondo bosque
 let desplazamiento;
 let imagenesdeshagy= [];
 let indiceshagy=0
@@ -17,6 +18,8 @@ let musicaCirco;
 let hablaPandilla;
 let hablaPolicia;
 let hablaSeñor;
+let textoAPandilla;
+let textoADetective;
 let textoPandilla = [
   "¿Que ocurrio?",
   "Disculpe señor,¿Usted sabe algo de lo que ocurrio?",
@@ -50,11 +53,12 @@ for(let i = 0; i < 8; i++){
   imagenesdevelma[i] = loadImage('assets/velma' + (i+1) + '.png');
 }
 }
+aullidoDeLobo =loadSoun('assets/Aullidodelobo.mp3');
 
 function setup() {
 createCanvas(800, 450);
   textSize(20);
-  
+textoAPandilla, textoADetective = 0;
   hablaPandilla = true;
   hablaPolicia = false;
   hablaSeñor = false;
@@ -85,6 +89,14 @@ image(fondo,-desplazamiento+800,0,800,600);
  if (posicionxvelma > 800){
    posicionxvelma = -200;
 }
+}
+function momentoEnLaHistoria() {
+if(frameHistoria == 0){
+  hablaPandilla = true;
+  textoAPandilla = 0;
+}
+  if(frameHistoria == 1){
+    textoAPandilla = 1
 }
 function mousePressed() {
 
