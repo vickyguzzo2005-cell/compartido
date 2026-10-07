@@ -19,7 +19,8 @@ let hablaPandilla;
 let hablaPolicia;
 let hablaSeñor;
 let textoAPandilla;
-let textoADetective;
+let textoAPolicia;
+let textoASeñor;
 let textoPandilla = [
   "¿Que ocurrio?",
   "Disculpe señor,¿Usted sabe algo de lo que ocurrio?",
@@ -58,7 +59,7 @@ aullidoDeLobo =loadSoun('assets/Aullidodelobo.mp3');
 function setup() {
 createCanvas(800, 450);
   textSize(20);
-textoAPandilla, textoADetective = 0;
+textoAPandilla, textoAPolicia, textoASeñor = 0;
   hablaPandilla = true;
   hablaPolicia = false;
   hablaSeñor = false;
@@ -106,8 +107,37 @@ if(frameHistoria == 0){
   if(frameHistoria == 3){
     textoAPolicia = 1
 } 
-
+if(frameHistoria == 4){
+    textoAPolicia = 2
+} 
+  if(frameHistoria == 5){
+    textoAPolicia = 3
+  }
+  if(frameHistoria == 6){
+    hablaPandilla = true;
+    hablaSeñor = false;
+    textoAPandilla = 2;
+  }
+  if(frameHistoria == 7){
+    hablaPandilla = false;
+    hablaSeñor = true;
+    textoASeñor = 0
+  }
+  if(frameHistoria == 8){
+    textoASeñor = 1
+  } 
+ if(frameHistoria == 6){
+    hablaPandilla = true;
+    hablaSeñor = false;
+    textoAPandilla = 3;
+ }
+    if(frameHistoria == 7){
+    hablaPandilla = false;
+    hablaSeñor = true;
+    textoASeñor = 2
     }
+    }
+
 function mousePressed() {
 
 }
