@@ -10,6 +10,8 @@ let indicevelma=0
 let velocidadcaminarvelma=1.9
 let tiempovelma
 let posicionxvelma=200;
+let aullidoDeLobo;
+let musicaCirco;
 let textoPandilla = [
   "¿Que ocurrio?",
   "Disculpe señor,¿Usted sabe algo de lo que ocurrio?",
@@ -23,6 +25,14 @@ let textoPolicia = [
 let textoSeñor = [
   "Lo unico que se es que el payaso plinplin no estaba actuando como siempre, no parecia él",
   "No lo insinuo, lo se. Han estado pasando cosas raras estos días, cómo el tipo raro que se fue por haya"
+];
+let selecciones1 = [
+  "Ir por el camino a la derecha",
+  "Ir por el camino a la Izquierda",
+];
+let selecciones2 = [
+  "Seguir (ignorar los aullidos)",
+  "Desviarse del camino",
 ];
 
 function preload(){fondo = loadImage('assets/fondoferia.png');
@@ -64,6 +74,7 @@ image(fondo,-desplazamiento+800,0,800,600);
    posicionxvelma = -200;
 }
 }
+function mousePressed() {
 
-
+}
   
