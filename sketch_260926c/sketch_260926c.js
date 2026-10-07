@@ -97,7 +97,17 @@ if(frameHistoria == 0){
 }
   if(frameHistoria == 1){
     textoAPandilla = 1
-}
+} 
+  if(frameHistoria == 2){
+    hablaPandilla = false;
+    hablaPolicia = true;
+    textoAPolicia = 0;
+  }
+  if(frameHistoria == 3){
+    textoAPolicia = 1
+} 
+
+    }
 function mousePressed() {
 
 }
