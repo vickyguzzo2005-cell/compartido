@@ -10,8 +10,13 @@ let indicevelma=0
 let velocidadcaminarvelma=1.9
 let tiempovelma
 let posicionxvelma=200;
+let frameHistoria; //para dividir cada momento
+let elegir;
 let aullidoDeLobo;
 let musicaCirco;
+let hablaPandilla;
+let hablaPolicia;
+let hablaSeñor;
 let textoPandilla = [
   "¿Que ocurrio?",
   "Disculpe señor,¿Usted sabe algo de lo que ocurrio?",
@@ -47,8 +52,15 @@ for(let i = 0; i < 8; i++){
 }
 
 function setup() {
-
 createCanvas(800, 450);
+  textSize(20);
+  
+  hablaPandilla = true;
+  hablaPolicia = false;
+  hablaSeñor = false;
+
+  frameHistoria = 0;
+  elegir = false;
 }
 function draw() {
  background(0);
