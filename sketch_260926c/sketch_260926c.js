@@ -13,6 +13,7 @@ let tiempovelma
 let posicionxvelma=200;
 let frameHistoria; //para dividir cada momento
 let elegir;
+let posXNombre;
 let aullidoDeLobo;
 let musicaCirco;
 let hablaPandilla;
@@ -57,7 +58,7 @@ aullidoDeLobo =loadSoun('assets/Aullidodelobo.mp3');
 function setup() {
 createCanvas(800, 450);
   textSize(20);
-textoAPandilla, textoAPolicia, textoASeñor = 0;
+textoAPandilla = textoAPolicia = textoASeñor = minTexto = maxTexto = 0;
   hablaPandilla = true;
   hablaPolicia = false;
   hablaSeñor = false;
@@ -194,6 +195,25 @@ function escribirConversacion() {
   }
 }
 function mousePressed() {
-
+if (frameHistoria != 5) {//CAMBIAR
+    frameHistoria ++;
+    maxTexto = 0;
+  }
+  if (frameHistoria > 6) {
+    frameHistoria = 0;
+    maxTexto = 0;
+  }
+  if (frameHistoria == 5 && sePuedeElegir) {
+    if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
+      frameHistoria = 6;
+      sePuedeElegir = false;
+    }
+    if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
+      frameHistoria = 7;
+      maxTexto = 0;
+      sePuedeElegir = false;
+    }
+  }
 }
+
   
