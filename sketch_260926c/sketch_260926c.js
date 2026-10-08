@@ -167,6 +167,32 @@ function cajasSelecciones(){
   elegir = true;
   escribirSelecciones()
 }
+function dibujarCajaDeTexto(i, posX) {
+  push();
+  fill (queColorDeFill());
+  text(personaje[i], posX, 270);
+  pop();
+  push();
+  stroke(queColorDeStroke());
+  fill(queColorDeFill(),75);
+  rect(30, 280, 340, 100, 20);
+  pop();
+
+  escribirConversacion();
+}
+function escribirConversacion() {
+  if (hablaPandilla) {
+    push();
+    fill (queColorDeStroke());
+    text(textoPandilla[textoAPandilla].substring(minTexto, maxTexto++), 50, 300, 300);
+    pop();
+  } else if (hablaPolicia) {
+    push();
+    fill(queColorDeStroke());
+    text(textoPolicia[textoAPolicia].substring(minTexto, maxTexto++), 50, 300, 300);
+    pop();
+  }
+}
 function mousePressed() {
 
 }
