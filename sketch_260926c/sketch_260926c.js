@@ -125,12 +125,12 @@ if(frameHistoria == 4){
   if(frameHistoria == 8){
     textoASeñor = 1
   } 
- if(frameHistoria == 6){
+ if(frameHistoria == 9){
     hablaPandilla = true;
     hablaSeñor = false;
     textoAPandilla = 3;
  }
-    if(frameHistoria == 7){
+    if(frameHistoria == 10){
     hablaPandilla = false;
     hablaSeñor = true;
     textoASeñor = 2
@@ -195,21 +195,67 @@ function escribirConversacion() {
   }
 }
 function mousePressed() {
-if (frameHistoria != 5) {//CAMBIAR
+if (frameHistoria = 0) {//CAMBIAR
     frameHistoria ++;
     maxTexto = 0;
   }
-  if (frameHistoria > 6) {
+  if (frameHistoria > 1) {
     frameHistoria = 0;
     maxTexto = 0;
   }
-  if (frameHistoria == 5 && sePuedeElegir) {
+  if (frameHistoria > 2) {
+    frameHistoria = 1;
+    maxTexto = 0;
+  }
+  if (frameHistoria > 3) {
+    frameHistoria = 2;
+    maxTexto = 0;
+  }
+  if (frameHistoria > 4) {
+    frameHistoria = 3;
+    maxTexto = 0;
+  }
+  if (frameHistoria > 5) {
+    frameHistoria = 4;
+    maxTexto = 0;
+  }
+  if (frameHistoria > 6) {
+    frameHistoria = 5;
+    maxTexto = 0;
+  }
+  if (frameHistoria > 7) {
+    frameHistoria = 6;
+    maxTexto = 0;
+  }
+  if (frameHistoria > 8) {
+    frameHistoria = 7;
+    maxTexto = 0;
+  }
+  if (frameHistoria > 9 {
+    frameHistoria = 8;
+    maxTexto = 0;
+  }
+  if (frameHistoria > 10) {
+    frameHistoria = 9;
+    maxTexto = 0;
+  }
+  if (frameHistoria == 12 && sePuedeElegir) {
     if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
-      frameHistoria = 6;
+      frameHistoria = 13;
       sePuedeElegir = false;
     }
     if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
-      frameHistoria = 7;
+      frameHistoria = 14;
+      maxTexto = 0;
+      sePuedeElegir = false;
+    }
+     if (frameHistoria == 14 && sePuedeElegir) {
+    if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
+      frameHistoria = 15;
+      sePuedeElegir = false;
+    }
+    if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
+      frameHistoria = 16;
       maxTexto = 0;
       sePuedeElegir = false;
     }
