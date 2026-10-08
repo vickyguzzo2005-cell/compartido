@@ -35,11 +35,9 @@ let textoSeñor = [
   "Lo unico que se es que el payaso plinplin no estaba actuando como siempre, no parecia él",
   "No lo insinuo, lo se. Han estado pasando cosas raras estos días, cómo el tipo raro que se fue por haya"
 ];
-let selecciones1 = [
+let selecciones = [
   "Ir por el camino a la derecha",
   "Ir por el camino a la Izquierda",
-];
-let selecciones2 = [
   "Seguir (ignorar los aullidos)",
   "Desviarse del camino",
 ];
@@ -137,7 +135,38 @@ if(frameHistoria == 4){
     textoASeñor = 2
     }
     }
-
+function quePersonajeHabla() {
+  if (hablaPandilla) {
+    return 0;
+  }
+  if (hablaPolicia) {
+    return 1;
+  }
+  if (hablaSeñor){
+    return 2;
+  }
+}
+function escribirSelecciones(){
+  push();
+  textAlign(CENTER);
+  fill(90);
+  text(selecciones[0], 200, 150);
+  text(selecciones[1], 200, 200);
+  text(selecciones[2], 200, 150);
+  text(selecciones[3], 200, 200);
+  pop();
+}
+function cajasSelecciones(){
+  push();
+  rectMode(CENTER);
+  stroke(90);
+  fill(10);
+  rect(200, 143, 325, 40, 20);
+  rect(200, 194, 325, 40, 20);
+  pop();
+  elegir = true;
+  escribirSelecciones()
+}
 function mousePressed() {
 
 }
