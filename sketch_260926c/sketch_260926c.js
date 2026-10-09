@@ -1,6 +1,8 @@
 let velocidadAnimacion = 90;
 let fondo; //primer fondo
 let fondoB; //fondo bosque
+let fondoB2;
+let fondoC; //fondo cabaña
 let desplazamiento;
 let imagenesdeshagy= [];
 let indiceshagy=0
