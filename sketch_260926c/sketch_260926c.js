@@ -24,6 +24,14 @@ let hablaSeñor;
 let textoAPandilla;
 let textoAPolicia;
 let textoASeñor;
+let hayTexto;
+let texto = [
+  "Entramos al bosque y hay dos caminos",
+  "No debimos ignorar los aullidos de lobo",
+  "Encontramos una cabaña, debe estar el asesino",
+  "Mejor prevenir que lamentar", //cuando deciden desviarse
+  "Entramos",
+];
 let textoPandilla = [
   "¿Que ocurrio?",
   "Disculpe señor,¿Usted sabe algo de lo que ocurrio?",
@@ -194,6 +202,11 @@ function escribirConversacion() {
     fill(queColorDeStroke());
     text(textoPolicia[textoAPolicia].substring(minTexto, maxTexto++), 50, 300, 300);
     pop();
+  }else if (hablaSeñor) {
+    push();
+    fill(queColorDeStroke());
+    text(textoSeñor[textoASeñor].substring(minTexto, maxTexto++), 50, 300, 300);
+    pop();
   }
 }
 function queColorDeFill() {
@@ -254,7 +267,7 @@ if (frameHistoria = 0) {//verificar
     frameHistoria = 7;
     maxTexto = 0;
   }
-  if (frameHistoria > 9 {
+  if (frameHistoria > 9) {
     frameHistoria = 8;
     maxTexto = 0;
   }
@@ -262,25 +275,33 @@ if (frameHistoria = 0) {//verificar
     frameHistoria = 9;
     maxTexto = 0;
   }
+   if (frameHistoria > 11) {
+    frameHistoria = 10;
+    maxTexto = 0;
+  }
   if (frameHistoria == 12 && sePuedeElegir) {
     if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
       frameHistoria = 13;
+      dibujarCajasSelecciones();
       elegir = false;
     }
     if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
       frameHistoria = 14;
       maxTexto = 0;
+      dibujarCajasSelecciones();
       elegir = false;
     }
      if (frameHistoria == 14 && sePuedeElegir) {
     if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
       frameHistoria = 15;
       elegir = false;
+      dibujarCajasSelecciones();
     }
     if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
       frameHistoria = 16;
       maxTexto = 0;
       elegir = false;
+      dibujarCajasSelecciones();
     }
   }
 }
