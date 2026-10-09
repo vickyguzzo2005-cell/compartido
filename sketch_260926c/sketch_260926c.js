@@ -194,8 +194,25 @@ function escribirConversacion() {
     pop();
   }
 }
+function queColorDeFill() {
+  if (hablaPandilla) {
+    return [60, 10, 90, 75];
+  } else if (hablaPolicia) {
+    return [10, 75];
+  }
+}
+
+function queColorDeStroke()
+{
+  if (hablaPandilla) {
+    return [60, 70, 50];
+  } else if (hablaPolicia) {
+    return [90];
+  }
+}
+
 function mousePressed() {
-if (frameHistoria = 0) {//CAMBIAR
+if (frameHistoria = 0) {//verificar
     frameHistoria ++;
     maxTexto = 0;
   }
