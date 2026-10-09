@@ -36,7 +36,7 @@ let textoPolicia = [
 ];
 let textoSeñor = [
   "Lo unico que se es que el payaso plinplin no estaba actuando como siempre, no parecia él",
-  "No lo insinuo, lo se. Han estado pasando cosas raras estos días, cómo el tipo raro que se fue por haya"
+  "No lo insinuo, lo se. Han estado pasando cosas raras estos días, cómo el tipo raro que se fue al bosque"
 ];
 let selecciones = [
   "Ir por el camino a la derecha",
@@ -201,6 +201,8 @@ function queColorDeFill() {
     return [60, 10, 90, 75];
   } else if (hablaPolicia) {
     return [10, 75];
+  }else if (hablaSeñor) {
+    return [10, 75];
   }
 }
 
@@ -209,6 +211,8 @@ function queColorDeStroke()
   if (hablaPandilla) {
     return [60, 70, 50];
   } else if (hablaPolicia) {
+    return [90];
+  }else if (hablaSeñor) {
     return [90];
   }
 }
