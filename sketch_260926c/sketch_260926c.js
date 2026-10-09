@@ -259,22 +259,22 @@ if (frameHistoria = 0) {//verificar
   if (frameHistoria == 12 && sePuedeElegir) {
     if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
       frameHistoria = 13;
-      sePuedeElegir = false;
+      elegir = false;
     }
     if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
       frameHistoria = 14;
       maxTexto = 0;
-      sePuedeElegir = false;
+      elegir = false;
     }
      if (frameHistoria == 14 && sePuedeElegir) {
     if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
       frameHistoria = 15;
-      sePuedeElegir = false;
+      elegir = false;
     }
     if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
       frameHistoria = 16;
       maxTexto = 0;
-      sePuedeElegir = false;
+      elegir = false;
     }
   }
 }
