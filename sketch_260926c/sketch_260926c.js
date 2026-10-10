@@ -402,7 +402,7 @@ hablaPandilla = true;
 hablaFred = false;
 hablaDaf = false;
 frameHistoria = 0;
-elegir = false;
+
 }
 function draw() {
  background(0);
@@ -412,8 +412,6 @@ image(fondo,-desplazamiento+800,0,800,600);
 if (aparecefred){
 image(imagenesfred[0],posicionxfred, 250,160,200);
 }
- 
-   
      
        if(aparecefred && posicionx > 460){
          detenerse = true ;
@@ -593,7 +591,24 @@ function cajasSelecciones(){
   pop();
   escribirSelecciones2();
 }
-
+function final1(){
+  bacground(0);
+  fill(255);
+  textSize(50);
+  final1 = 0
+}
+  function final2(){
+  bacground(0);
+  fill(255);
+  textSize(50);
+  final2 = 0
+  }
+  function final3(){
+  bacground(0);
+  fill(255);
+  textSize(50);
+  final3 = 0
+  }
 function mousePressed() {
   if (!sePuedeElegir) return; // no hace nada si no llegaron todavía
   
@@ -612,7 +627,7 @@ function mousePressed() {
     
     }else if(frameHistoria < 10){
     frameHistoria++;
-    final1 = 0;
+    final1();
     }if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
       frameHistoria = 12;
       maxTexto = 0;
