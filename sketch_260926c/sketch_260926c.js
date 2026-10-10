@@ -607,6 +607,17 @@ function mousePressed() {
     maxTexto = 0;
     minTexto = 0;
   } 
+  /* if (frameHistoria == 9 && sePuedeElegir) {
+    if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
+      frameHistoria = 10;
+      dibujarCajasSelecciones();
+      elegir = false;
+    }
+    if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
+      frameHistoria = 11;
+      maxTexto = 0;
+      dibujarCajasSelecciones();
+      elegir = false;*/
 }
 function keyPressed(){
   if( key == 'p' ){
