@@ -902,8 +902,21 @@ function keyPressed(){
   }
 
 }
-
-
+//cosas que se pueden agregar
+    (en draw) y poner en let pantalla = 0
+if(pantalla==0) { image(fondoActual, -desplazamiento, 0, 800, 600);image(fondoActual, -desplazamiento + 800, 0, 800, 600);
+  fill(255,0,0);
+  ellipse(330,400,150,80);
+  textSize(35);
+  fill(0);
+  text("PLAY",290,410);
+  }
+    (en moussespressed, al peincipio)
+        if (pantalla==0) {
+  if (mouseX>0  && mouseX<80 && mouseY> 430 && mouseY < 480) {
+    pantalla=0;
+  text("PLAY",290,410);
+  }
 
   
 
