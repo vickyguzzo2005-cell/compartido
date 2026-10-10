@@ -840,6 +840,14 @@ function keyPressed(){
 }
 //cosas que se pueden agregar
   //cuando vas a la izquierda
+  if (detenerse || detenidodaphne) {
+    momentoEnLaHistoria();
+    dibujarCajaDeTexto();
+  }
+  if (detenidodaphne && frameHistoria >=10){
+    detenidodaphne = false;
+    sePuedeElegir = true;
+  }
   if (sePuedeElegir && !detenerse && !detenidodaphne && frameHistoria >=10){
     stroke(255);
     strokeWeight(3);
