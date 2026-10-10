@@ -849,7 +849,7 @@ if(pantalla==0) { image(fondoActual, -desplazamiento, 0, 800, 600);image(fondoAc
   }
     (en moussespressed, al peincipio)
         if (pantalla==0) {
-  if (mouseX>0  && mouseX<80 && mouseY> 430 && mouseY < 480) {
+  if (mouseX>290  && mouseX<580 && mouseY> 230 && mouseY < 290) {
     pantalla=0;
   text("PLAY",290,410);
   }
