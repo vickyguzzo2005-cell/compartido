@@ -839,6 +839,9 @@ function keyPressed(){
 
 }
 //cosas que se pueden agregar
+  function reinicio(){
+  
+  }
   //cuando vas a la izquierda
   if (detenerse || detenidodaphne) {
     momentoEnLaHistoria();
