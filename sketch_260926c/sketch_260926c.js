@@ -366,6 +366,15 @@ let selecciones = [
   "Seguir (ignorar los aullidos)",
   "Desviarse del camino",
 ];
+let final1 = [
+"Final bueno: atraparon al asesino",
+  ];
+ let final2 = [
+"Final malo: fueron comidos por los lobos",
+   ];
+ let final3 = [
+"Final neitro: no lograron a trapar al asesino",
+   ]
 
 function preload(){fondo = loadImage('assets/fondoferia.png');
 
