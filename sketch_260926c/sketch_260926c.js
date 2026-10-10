@@ -345,14 +345,6 @@ let maxTexto;
 let hayTexto;
 let sePuedeElegir = false;
 let personaje = ["Pandilla", "Policía", "Señor"];
-
-let texto = [
-  "Entramos al bosque y hay dos caminos",
-  "No debimos ignorar los aullidos de lobo",
-  "Encontramos una cabaña, debe estar el asesino",
-  "Mejor prevenir que lamentar",
-  "Entramos",
-];
 let textoPandilla = [
   "¿Qué ocurrió?",
   "¿Y el sabia algo?",
@@ -565,6 +557,14 @@ function escribirSelecciones(){
   text(selecciones[1], 400, 200);
   pop();
 }
+  function escribirSelecciones2(){
+  push();
+  textAlign(CENTER);
+  fill(255);
+  text(selecciones[2], 400, 150);
+  text(selecciones[3], 400, 200);
+  pop();
+}
 
 function cajasSelecciones(){
   push();
@@ -576,6 +576,16 @@ function cajasSelecciones(){
   pop();
   escribirSelecciones();
 }
+  function cajasSelecciones2(){
+  push();
+  rectMode(CENTER);
+  stroke(90);
+  fill(30);
+  rect(400, 143, 325, 40, 20);
+  rect(400, 194, 325, 40, 20);
+  pop();
+  escribirSelecciones2();
+}
 
 function mousePressed() {
   if (!sePuedeElegir) return; // no hace nada si no llegaron todavía
@@ -583,11 +593,11 @@ function mousePressed() {
   if (frameHistoria == 0) {
     frameHistoria++;
     maxTexto = 0;
-  } else if (frameHistoria < 7) {
+  } else if (frameHistoria < 8) {
     frameHistoria++;
     maxTexto = 0;
     minTexto = 0;
-  }
+  } 
 }
 function keyPressed(){
   if( key == 'p' ){
