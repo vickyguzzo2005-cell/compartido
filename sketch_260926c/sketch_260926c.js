@@ -330,7 +330,6 @@ let posicionxfred=600;
 let aparecefred=false;
 let detenerse = false;
 let frameHistoria;
-let elegir;
 let posXNombre;
 let aullidoDeLobo;
 let musicaCirco;
@@ -342,7 +341,6 @@ let textoAPandilla;
 let textoADaf;
 let minTexto;
 let maxTexto;
-let hayTexto;
 let sePuedeElegir = false;
 let personaje = ["Pandilla", "Policía", "Señor"];
 let textoPandilla = [
