@@ -608,22 +608,37 @@ function mousePressed() {
   /* if (frameHistoria == 9 && sePuedeElegir) {
     if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
       frameHistoria = 10;
-      dibujarCajasSelecciones();
-      elegir = false;
-    }
-    if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
-      frameHistoria = 11;
+      CajasSelecciones();
+    
+    }else if(frameHistoria < 10){
+    frameHistoria++;
+    final1 = 0;
+    }if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
+      frameHistoria = 12;
       maxTexto = 0;
-      dibujarCajasSelecciones();
-      elegir = false;*/
+      CajasSelecciones();
+     
+      }if (frameHistoria = 12 && sePuedeElegir){
+      if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
+      frameHistoria = 13;
+      CajasSelecciones2();
+      }else if(frameHistoria < 13){
+      frameHistoria++;
+      final2 = 0;
+    
+     }if (mouseX > 50 && mouseX < 350 && mouseY > 175 && mouseY < 215) {
+      frameHistoria = 15;
+      CajasSelecciones2();
+      }else if(frameHistoria > 11){
+      frameHistoria++;
+      final3 = 0
+      */
 }
 function keyPressed(){
   if( key == 'p' ){
     musicaCirco.loop();
     musicaCirco.setVolumen(10);
   }
-
-}
 
 
 
