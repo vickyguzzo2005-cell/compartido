@@ -391,6 +391,8 @@ for(let i = 0; i < 9; i++){
 for(let i = 0; i < 1; i++){
   imagenesfred[0] = loadImage('assets/fredquieto.png');
 }
+aullidoDeLobo =loadSoun('assets/Aullidodelobo.mp3');
+musicaCirco = loadSound('assets/circo.mp3');                 
 }
 function setup() {
 
@@ -587,7 +589,12 @@ function mousePressed() {
     minTexto = 0;
   }
 }
+function keyPressed(){
+  if( key == 'p' ){
+    musicaCirco.loop();
+  }
 
+}
 
 
 
