@@ -335,11 +335,11 @@ let posXNombre;
 let aullidoDeLobo;
 let musicaCirco;
 let hablaPandilla;
-let hablaPolicia;
-let hablaSeñor;
+let hablaFred;
+let hablaDaf;
+let textoAFred;
 let textoAPandilla;
-let textoAPolicia;
-let textoASeñor;
+let textoADaf;
 let minTexto;
 let maxTexto;
 let hayTexto;
@@ -355,17 +355,18 @@ let texto = [
 ];
 let textoPandilla = [
   "¿Qué ocurrió?",
-  "Disculpe señor, ¿Usted sabe algo de lo que ocurrió?",
+  "¿Y el sabia algo?",
   "¿Insinúa que alguien se hizo pasar por él?",
 ];
-let textoPolicia = [
+let textoFred = [
   "Mataron al payaso del circo tirándole un cuchillo directo a su cabeza",
-  "Ya interrogamos a todas las personas del público y a los trabajadores. Aunque no dijeron nada relevante",
-  "Solo faltó el señor que limpia",
+  "Ya interrogaron a todas las personas del público y a los trabajadores. Aunque no dijeron nada relevante",
+  "A excepcion del señor que limpia",
 ];
-let textoSeñor = [
-  "Lo único que sé es que el payaso plinplin no estaba actuando como siempre, no parecía él",
-  "No lo insinúo, lo sé. Han estado pasando cosas raras estos días, como el tipo raro que se fue al bosque",
+let textoDaf = [
+  "Lo único que dijo es que el payaso no estaba actuando como siempre, que no parecía él",
+  "Dijo que estaba seguro",
+  "ya que han estado pasando cosas raras estos días, como un tipo raro que se fue al bosque",
 ];
 let selecciones = [
   "Ir por el camino a la derecha",
@@ -395,10 +396,10 @@ function setup() {
 
 createCanvas(800, 450);
 textSize(20);
-textoAPandilla = textoAPolicia = textoASeñor = minTexto = maxTexto = 0;
+textoAPandilla = textoAFred = textoADaf = minTexto = maxTexto = 0;
 hablaPandilla = true;
-hablaPolicia = false;
-hablaSeñor = false;
+hablaFred = false;
+hablaDaf = false;
 frameHistoria = 0;
 elegir = false;
 }
@@ -475,46 +476,49 @@ function momentoEnLaHistoria() {
   }
   if(frameHistoria == 2){
     hablaPandilla = false;
-    hablaPolicia = true;
-    textoAPolicia = 0;
+    hablaFred = true;
+    textoAFred = 0;
   }
   if(frameHistoria == 3){
-    textoAPolicia = 1;
+    textoAFred = 1;
   }
   if(frameHistoria == 4){
-    textoAPolicia = 2;
+    textoAFred = 2;
   }
   if(frameHistoria == 5){
     hablaPandilla = true;
-    hablaSeñor = false;
+    hablaDaf = false;
     textoAPandilla = 2;
   }
   if(frameHistoria == 6){
     hablaPandilla = false;
-    hablaSeñor = true;
-    textoASeñor = 0;
+    hablaDaf = true;
+    textoADaf = 0;
   }
   if(frameHistoria == 7){
-    textoASeñor = 1;
+    textoADaf = 1;
+  }
+  if(frameHistoria == 8){
+     textoADaf = 2;  
   }
 }
 
 function quePersonajeHabla() {
   if (hablaPandilla) return 0;
-  if (hablaPolicia) return 1;
-  if (hablaSeñor) return 2;
+  if (hablaFred) return 1;
+  if (hablaDaf) return 2;
 }
 
 function queColorDeFill() {
   if (hablaPandilla) return [60, 10, 90, 75];
-  if (hablaPolicia) return [100, 75];
-  if (hablaSeñor) return [100, 75];
+  if (hablaFred) return [100, 75];
+  if (hablaDaf) return [100, 75];
 }
 
 function queColorDeStroke() {
   if (hablaPandilla) return [60, 70, 50];
-  if (hablaPolicia) return [90];
-  if (hablaSeñor) return [90];
+  if (hablaFred) return [90];
+  if (hablaDaf) return [90];
 }
 
 function escribirConversacion() {
@@ -523,15 +527,15 @@ function escribirConversacion() {
     fill(queColorDeStroke());
     text(textoPandilla[textoAPandilla].substring(minTexto, maxTexto++), 50, 300, 300);
     pop();
-  } else if (hablaPolicia) {
+  } else if (hablaFred) {
     push();
     fill(queColorDeStroke());
-    text(textoPolicia[textoAPolicia].substring(minTexto, maxTexto++), 50, 300, 300);
+    text(textoFred[textoAFred].substring(minTexto, maxTexto++), 50, 300, 300);
     pop();
-  } else if (hablaSeñor) {
+  } else if (hablaDaf) {
     push();
     fill(queColorDeStroke());
-    text(textoSeñor[textoASeñor].substring(minTexto, maxTexto++), 50, 300, 300);
+    text(textoDaf[textoADaf].substring(minTexto, maxTexto++), 50, 300, 300);
     pop();
   }
 }
