@@ -305,5 +305,288 @@ if (frameHistoria = 0) {//verificar
     }
   }
 }
+  //lo que esta en mi processing ( victoria)
+  let velocidadAnimacion = 90;
+let tiempo
+let fondo;
+let desplazamiento;
+let imagenesdeshagy= [];
+let indiceshagy=0
+let posicionx =-100;
+let velocidadcaminar=2.0;
+let imagenesdevelma = [];
+let indicevelma=0
+let velocidadcaminarvelma=2.0;
+let tiempovelma
+let posicionxvelma=-180;
+let velocidaddescoby=1.9;
+let posicionxscoby=-260;
+let tiemposcoby
+let indicescoby=0
+let imagenesscoby=[]
+let imagenesfred=[]
+let indicefred=0;
+let posicionxfred=600;
+let aparecefred=false;
+let detenerse = false;
+let frameHistoria;
+let elegir;
+let posXNombre;
+let aullidoDeLobo;
+let musicaCirco;
+let hablaPandilla;
+let hablaPolicia;
+let hablaSeñor;
+let textoAPandilla;
+let textoAPolicia;
+let textoASeñor;
+let minTexto;
+let maxTexto;
+let hayTexto;
+let sePuedeElegir = false;
+let personaje = ["Pandilla", "Policía", "Señor"];
+
+let texto = [
+  "Entramos al bosque y hay dos caminos",
+  "No debimos ignorar los aullidos de lobo",
+  "Encontramos una cabaña, debe estar el asesino",
+  "Mejor prevenir que lamentar",
+  "Entramos",
+];
+let textoPandilla = [
+  "¿Qué ocurrió?",
+  "Disculpe señor, ¿Usted sabe algo de lo que ocurrió?",
+  "¿Insinúa que alguien se hizo pasar por él?",
+];
+let textoPolicia = [
+  "Mataron al payaso del circo tirándole un cuchillo directo a su cabeza",
+  "Ya interrogamos a todas las personas del público y a los trabajadores. Aunque no dijeron nada relevante",
+  "Solo faltó el señor que limpia",
+];
+let textoSeñor = [
+  "Lo único que sé es que el payaso plinplin no estaba actuando como siempre, no parecía él",
+  "No lo insinúo, lo sé. Han estado pasando cosas raras estos días, como el tipo raro que se fue al bosque",
+];
+let selecciones = [
+  "Ir por el camino a la derecha",
+  "Ir por el camino a la izquierda",
+  "Seguir (ignorar los aullidos)",
+  "Desviarse del camino",
+];
+
+function preload(){fondo = loadImage('assets/fondoferia.png');
+
+for(let i = 0; i < 9; i++) {
+ imagenesdeshagy[i] = loadImage('assets/shagy' + (i+1) + '.png'); 
+ console.log('Cargando imagen:',i+1); }
+
+for(let i = 0; i < 8; i++){
+  imagenesdevelma[i] = loadImage('assets/velma' + (i+1) + '.png');
+}
+
+for(let i = 0; i < 9; i++){ 
+  imagenesscoby[i] = loadImage('assets/scoby' + (i+1) + '.png');
+}
+for(let i = 0; i < 1; i++){
+  imagenesfred[0] = loadImage('assets/fredquieto.png');
+}
+}
+function setup() {
+
+createCanvas(800, 450);
+textSize(20);
+textoAPandilla = textoAPolicia = textoASeñor = minTexto = maxTexto = 0;
+hablaPandilla = true;
+hablaPolicia = false;
+hablaSeñor = false;
+frameHistoria = 0;
+elegir = false;
+}
+function draw() {
+ background(0);
+  let desplazamiento = (millis() / velocidadAnimacion) % 800;
+  image(fondo,-desplazamiento,0,800,600);
+image(fondo,-desplazamiento+800,0,800,600);
+if (aparecefred){
+image(imagenesfred[0],posicionxfred, 250,160,200);
+}
+ 
+   
+     
+       if(aparecefred && posicionx > 460){
+         detenerse = true ;
+       }
+     if (posicionxscoby> 900 && !aparecefred){
+       aparecefred=true;
+       posicionx=-100;
+       posicionxvelma=-180;
+       posicionxscoby=-260;
+     }
+     
+      
+//shagy  
+    tiempo = millis()/250;
+    if (!detenerse){
+  indiceshagy= floor(tiempo)%9;
+ posicionx=posicionx + velocidadcaminar;
+    }else{
+      indiceshagy=0;
+    }
+ // console.log(indiceshagy,imagenesdeshagy[indiceshagy]);
+ console.log("tiempo:",tiempo,indiceshagy);
+  image(imagenesdeshagy[indiceshagy],posicionx,250,150,200);
+
+ 
+//velma
+  tiempovelma = millis()/260;
+  if(!detenerse){
+ indicevelma = floor (tiempovelma)%8;
+ posicionxvelma = posicionxvelma+velocidadcaminarvelma;
+  }else{
+    indicevelma=0;
+  }
+ console.log("tiempovelma:",tiempovelma,indicevelma);
+ 
+ 
+ image(imagenesdevelma[indicevelma],posicionxvelma,250,160,201);
+
+//scoby
+ tiemposcoby = millis()/250;
+ if(!detenerse){
+indicescoby = floor (tiemposcoby)%7;
+posicionxscoby = posicionxscoby+velocidaddescoby;
+ }else{
+   indicescoby=0;
+ }
+ if (detenerse) {
+  momentoEnLaHistoria();
+  dibujarCajaDeTexto();
+}
+console.log("tiemposcoby:",tiemposcoby,indicescoby);
+image(imagenesscoby[indicescoby],posicionxscoby,290,170,202);
+}
+function momentoEnLaHistoria() {
+  if(frameHistoria == 0){
+    hablaPandilla = true;
+    textoAPandilla = 0;
+  }
+  if(frameHistoria == 1){
+    textoAPandilla = 1;
+  }
+  if(frameHistoria == 2){
+    hablaPandilla = false;
+    hablaPolicia = true;
+    textoAPolicia = 0;
+  }
+  if(frameHistoria == 3){
+    textoAPolicia = 1;
+  }
+  if(frameHistoria == 4){
+    textoAPolicia = 2;
+  }
+  if(frameHistoria == 5){
+    hablaPandilla = true;
+    hablaSeñor = false;
+    textoAPandilla = 2;
+  }
+  if(frameHistoria == 6){
+    hablaPandilla = false;
+    hablaSeñor = true;
+    textoASeñor = 0;
+  }
+  if(frameHistoria == 7){
+    textoASeñor = 1;
+  }
+}
+
+function quePersonajeHabla() {
+  if (hablaPandilla) return 0;
+  if (hablaPolicia) return 1;
+  if (hablaSeñor) return 2;
+}
+
+function queColorDeFill() {
+  if (hablaPandilla) return [60, 10, 90, 75];
+  if (hablaPolicia) return [100, 75];
+  if (hablaSeñor) return [100, 75];
+}
+
+function queColorDeStroke() {
+  if (hablaPandilla) return [60, 70, 50];
+  if (hablaPolicia) return [90];
+  if (hablaSeñor) return [90];
+}
+
+function escribirConversacion() {
+  if (hablaPandilla) {
+    push();
+    fill(queColorDeStroke());
+    text(textoPandilla[textoAPandilla].substring(minTexto, maxTexto++), 50, 300, 300);
+    pop();
+  } else if (hablaPolicia) {
+    push();
+    fill(queColorDeStroke());
+    text(textoPolicia[textoAPolicia].substring(minTexto, maxTexto++), 50, 300, 300);
+    pop();
+  } else if (hablaSeñor) {
+    push();
+    fill(queColorDeStroke());
+    text(textoSeñor[textoASeñor].substring(minTexto, maxTexto++), 50, 300, 300);
+    pop();
+  }
+}
+
+function dibujarCajaDeTexto() {
+  push();
+  fill(queColorDeFill());
+  stroke(queColorDeStroke());
+  rect(30, 280, 340, 100, 20);
+  pop();
+  
+  push();
+  fill(queColorDeStroke());
+  text(personaje[quePersonajeHabla()], 50, 265);
+  pop();
+  
+  escribirConversacion();
+}
+
+function escribirSelecciones(){
+  push();
+  textAlign(CENTER);
+  fill(255);
+  text(selecciones[0], 400, 150);
+  text(selecciones[1], 400, 200);
+  pop();
+}
+
+function cajasSelecciones(){
+  push();
+  rectMode(CENTER);
+  stroke(90);
+  fill(30);
+  rect(400, 143, 325, 40, 20);
+  rect(400, 194, 325, 40, 20);
+  pop();
+  escribirSelecciones();
+}
+
+function mousePressed() {
+  if (!sePuedeElegir) return; // no hace nada si no llegaron todavía
+  
+  if (frameHistoria == 0) {
+    frameHistoria++;
+    maxTexto = 0;
+  } else if (frameHistoria < 7) {
+    frameHistoria++;
+    maxTexto = 0;
+    minTexto = 0;
+  }
+}
+
+
+
+
+  
 
   
