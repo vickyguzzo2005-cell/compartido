@@ -839,6 +839,7 @@ function keyPressed(){
 
 }
 //cosas que se pueden agregar
+  //cuando vas a la izquierda
   if (sePuedeElegir && !detenerse && !detenidodaphne && frameHistoria >=10){
     stroke(255);
     strokeWeight(3);
