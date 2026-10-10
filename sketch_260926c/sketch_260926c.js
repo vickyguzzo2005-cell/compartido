@@ -592,6 +592,7 @@ function mousePressed() {
 function keyPressed(){
   if( key == 'p' ){
     musicaCirco.loop();
+    musicaCirco.setVolumen(10);
   }
 
 }
