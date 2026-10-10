@@ -617,7 +617,8 @@ function mousePressed() {
       frameHistoria = 12;
       maxTexto = 0;
       CajasSelecciones();
-     
+     !aullidoDeLobo.isPlaying();
+     aullidoDeLobo.Play;
       }if (frameHistoria = 12 && sePuedeElegir){
       if (mouseX > 50 && mouseX < 350 && mouseY > 125 && mouseY < 160) {
       frameHistoria = 13;
