@@ -829,7 +829,13 @@ else {
     musicaCirco.stop();
     musicabosque.loop();
     sePuedeElegir=false;
-  }
+  }else if(frameHistoria = 10){//Probar
+    fondoActual=fondoCabaña;
+    fill(40,20,60,230);
+    rect (200,100,400,250,20);
+    textSize(40);
+    text('Final bueno, 400, 200);
+         reinicio();
 }
 }
 function keyPressed(){
@@ -840,18 +846,24 @@ function keyPressed(){
 }
 //cosas que se pueden agregar
   function reinicio(){
-  
+  //poner todo el draw(los if)
   }
   //cuando vas a la izquierda
+  if(frameHistoria = 10){
+    fill(40,20,60,230);
+    rect (200,100,400,250,20);
+    textSize(40);
+    text('Final bueno, 400, 200);
+         reinicio();
   if (detenerse || detenidodaphne) {
     momentoEnLaHistoria();
     dibujarCajaDeTexto();
   }
-  if (detenidodaphne && frameHistoria >=10){
+  if (detenidodaphne && frameHistoria >=11){
     detenidodaphne = false;
     sePuedeElegir = true;
   }
-  if (sePuedeElegir && !detenerse && !detenidodaphne && frameHistoria >=10){
+  if (sePuedeElegir && !detenerse && !detenidodaphne && frameHistoria >=11){
     stroke(255);
     strokeWeight(3);
     fill(40,20,60,230);
