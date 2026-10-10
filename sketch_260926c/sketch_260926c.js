@@ -839,20 +839,19 @@ function keyPressed(){
 
 }
 //cosas que se pueden agregar
-    (en draw) y poner en let pantalla = 0
-if(pantalla==0) { image(fondoActual, -desplazamiento, 0, 800, 600);image(fondoActual, -desplazamiento + 800, 0, 800, 600);
-  fill(255,0,0);
-  ellipse(330,400,150,80);
-  textSize(35);
-  fill(0);
-  text("PLAY",290,410);
-  }
-    (en moussespressed, al peincipio)
-        if (pantalla==0) {
-  if (mouseX>290  && mouseX<580 && mouseY> 230 && mouseY < 290) {
-    pantalla=0;
-  text("PLAY",290,410);
-  }
+  if (sePuedeElegir && !detenerse && !detenidodaphne && frameHistoria >=10){
+    stroke(255);
+    strokeWeight(3);
+    fill(40,20,60,230);
+    rect (200,100,400,250,20);
+    noStroke();
+    fill(255);
+    textSize(22);
+    textAlign(CENTER);
+    text("Parece que hay lobos",400,140);
+    textSize(20);
+    text("Seguir (ignorar los aullidos",400,200);
+    text("Desviarse del camino",400,260);
 
   
 
