@@ -371,7 +371,7 @@ let final1 = [
 "Final malo: fueron comidos por los lobos",
    ];
  let final3 = [
-"Final neitro: no lograron a trapar al asesino",
+"Final neutro: no lograron a trapar al asesino",
    ]
 
 function preload(){fondo = loadImage('assets/fondoferia.png');
