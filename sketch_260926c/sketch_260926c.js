@@ -1,3 +1,5 @@
+guzzo victoria
+martinez julieta
 let velocidadAnimacion = 90;
 let tiempo;
 let fondo;
