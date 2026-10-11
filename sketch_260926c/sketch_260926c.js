@@ -822,14 +822,20 @@ else {
     musicaCirco.stop();
     musicabosque.loop();
     sePuedeElegir = false;
-  }
+  }else if(frameHsitoria = 10){
+    fondoActual=fondobosque;
+    fill(40,20,60,230);
+    rect (200,100,400,250,20);
+    textSize(40);
+    text('Final malo: se lo comen los lobos', 400, 200);
+         reinicio();
   if (mouseX > 220 && mouseX < 580 && mouseY > 230 && mouseY < 290){
     seleccion = "derecha";
     fondoActual=fondoCabaña;
     musicaCirco.stop();
     musicabosque.loop();
     sePuedeElegir=false;
-  }else if(frameHistoria = 10){//Probar
+  }else if(frameHistoria = 11){//Probar
     fondoActual=fondoCabaña;
     fill(40,20,60,230);
     rect (200,100,400,250,20);
