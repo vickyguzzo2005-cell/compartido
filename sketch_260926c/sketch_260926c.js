@@ -834,7 +834,7 @@ else {
     fill(40,20,60,230);
     rect (200,100,400,250,20);
     textSize(40);
-    text('Final bueno', 400, 200);
+    text('Final bueno: atraparon al asesino', 400, 200);
          reinicio();
 }
 }
