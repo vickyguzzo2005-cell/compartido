@@ -1,7 +1,0 @@
-class objeto{
-  constructor(){
-  }
-  
-  dibujar(){
-  }
-}
