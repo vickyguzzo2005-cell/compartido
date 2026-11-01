@@ -1,0 +1,7 @@
+class objeto{
+  constructor(){
+  }
+  
+  dibujar(){
+  }
+}
