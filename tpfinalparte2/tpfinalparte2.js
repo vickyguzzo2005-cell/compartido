@@ -1,5 +1,11 @@
 let fondo;
 let linterna;
+let guantes;
+let botas;
+let cuchillo;
+let trampa;
+let peluca;
+let fotos;
 let textoinstrucciones = [
   "Para descubrir quien es o donde esta el asesino, debera encontra 3 pistas CLAVES en 30 segundos"
 ];
@@ -12,6 +18,8 @@ function preload(){
   cuchillo = loadImage("assets/cuchillo.png");
   guantes = loadImage ("assets/guantes.png");
   trampa = loadImage("assets/trampa.png");
+  peluca = loadImage("assets/peluca.png");
+   fotos = loadImage("assets/fotos.png");
 }
 
 function setup() {
@@ -21,11 +29,12 @@ function setup() {
 
 function draw() {
   image(fondo, 0, 0, 800, 400);
-   image(botas,300,200,50,50);
-  image(cuchillo,600,100,50,50);
-  image(trampa,200,30,50,50);
-  image(guantes,400,160,50,50);
-  
+   image(botas,510,300,50,50);
+  image(cuchillo,700,90,50,50);
+  image(trampa,400,200,50,50);
+  image(guantes,200,50,50,50);
+  image(peluca,5,250,50,50);
+  image(fotos,150,325,50,50);
   
   dibujarLinterna();
 }
