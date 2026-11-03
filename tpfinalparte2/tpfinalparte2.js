@@ -7,6 +7,11 @@ let textoinstrucciones = [
 function preload(){
   fondo = loadImage('assets/interiorcabana.jpg');
   linterna = loadImage("assets/linterna.png");
+   linterna = loadImage("assets/linterna.png");
+  botas = loadImage("assets/botas.png");
+  cuchillo = loadImage("assets/cuchillo.png");
+  guantes = loadImage ("assets/guantes.png");
+  trampa = loadImage("assets/trampa.png");
 }
 
 function setup() {
@@ -16,6 +21,11 @@ function setup() {
 
 function draw() {
   image(fondo, 0, 0, 800, 400);
+   image(botas,300,200,50,50);
+  image(cuchillo,600,100,50,50);
+  image(trampa,200,30,50,50);
+  image(guantes,400,160,50,50);
+  
   
   dibujarLinterna();
 }
