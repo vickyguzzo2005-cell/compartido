@@ -9,6 +9,14 @@ let fotos;
 let textoinstrucciones = [
   "Para descubrir quien es o donde esta el asesino, debera encontra 3 pistas CLAVES en 30 segundos"
 ];
+let textobjeto = [
+   "Cuchillo con sangre (de la victima)",
+   "Botas de montaña",
+   "Guantes",
+   "Trampa para lobos",
+   "Peluca de payaso",
+   "Fotos de la victima"
+];
 
 function preload(){
   fondo = loadImage('assets/interiorcabana.jpg');
