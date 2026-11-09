@@ -43,9 +43,14 @@ function draw() {
   image(guantes,200,50,50,50);
   image(peluca,5,250,50,50);
   image(fotos,150,325,50,50);
-  
+   if ( mostrarPista == true ){
+    fill(255);
+    rect (200,280,400,100);
+    fill(0);
+    text("el asesino transito por una zona lodosa ",220,330);
+   }
   dibujarLinterna();
-}
+
 
 function dibujarLinterna() {
   let x = constrain (mouseX, 0, width);
@@ -58,5 +63,15 @@ function dibujarLinterna() {
 }
 
 function mousePressed(){
+    if (mouseX > 510 && mouseX < 560 &&
+      mouseY > 300 && mouseY < 350 )
+      (mouseX>700 && mouseY < 750 && 
+      mouseY > 90 && mouseY < 140)
+      mostrarPista = true;
+}
+function mouseReleased(){
+  mostrarPista = false ; 
+}
+  
   
 }
