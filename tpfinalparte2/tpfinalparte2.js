@@ -17,6 +17,14 @@ let textobjeto = [
    "Peluca de payaso",
    "Fotos de la victima"
 ];
+let textoopciones = [
+    "El asesino debe ser el payaso real del circo, y el que murio es la verdadera victima", //respuesta correcta 
+    "El asesino debio huir hacia el bosque" //respuesta incorrecta
+];
+let textofinal = [
+     "GANASTE: al descubrir quien fue el verdadero asesino, pudieron identificarlo y atraparlo",
+     "Perdiste: al querer seguir al asesino al bosque, se encontraron con los lobos y su destino fue la muerte"
+];
 
 function preload(){
   fondo = loadImage('assets/interiorcabana.jpg');
