@@ -1,11 +1,6 @@
 let fondo;
 let linterna;
-/*let guantes = new objeto(200,50,50,50);
-let botas = new objeto(510,300,50,50);
-let cuchillo = new objeto(700,90,50,50);
-let trampa = new objeto(400,200,50,50);
-let peluca = new objeto(5,250,50,50);
-let fotos = new objeto(150,325,50,50);*/
+let time = 30;
 let mostrarPista = false;
 let elemento = new objeto();
 let intro = new inicio();
@@ -43,6 +38,7 @@ function draw() {
   image(fondo, 0, 0, 800, 400);
   elemento.dibujar();
   elemento.dibujarLinterna();
+  tem.tempo();
   //intro.inicio();
 }
 
