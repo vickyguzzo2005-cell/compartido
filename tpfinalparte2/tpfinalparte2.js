@@ -43,6 +43,7 @@ function draw() {
 }
 
 function mousePressed(){
+  //intro.mousePressed();
   elemento.mousePressed();
 }
 function mouseReleased(){
