@@ -1,5 +1,6 @@
 let fondo;
 let linterna;
+let musicaSuspenso;
 let time = 30;
 let mostrarPista = false;
 let elemento = new objeto();
@@ -49,3 +50,10 @@ function mousePressed(){
 function mouseReleased(){
  elemento.mouseReleased();
  } 
+
+ function keyPressed(){
+  if( key == ' ' ){
+    //reproduzco mi sonido, tipo "bang"
+    musicaSuspenso.play();
+  }
+ }
