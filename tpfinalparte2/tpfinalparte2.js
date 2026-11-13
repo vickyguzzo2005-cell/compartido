@@ -2,9 +2,11 @@ let fondo;
 let linterna;
 let musicaSuspenso;
 let time = 30;
+let tem = new tiempo();
 let mostrarPista = false;
 let elemento = new objeto();
 let intro = new inicio();
+let fini = new finales();
 let textoinstrucciones = [
   "Para descubrir quien es o donde esta el asesino, debera encontra 3 pistas CLAVES en 30 segundos"
 ];
