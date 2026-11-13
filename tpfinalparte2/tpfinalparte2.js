@@ -53,7 +53,6 @@ function mouseReleased(){
 
  function keyPressed(){
   if( key == ' ' ){
-    //reproduzco mi sonido, tipo "bang"
     musicaSuspenso.play();
   }
  }
