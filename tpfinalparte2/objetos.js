@@ -3,8 +3,7 @@ class objeto{
     this.x = x;
     this.y = y;
   }
-  
-  dibujar(){
+    dibujar(){
     image(botas, 510, 300, 50, 50);
     image(cuchillo, 700, 90, 50, 50);
     image(trampa, 400, 200, 50, 50);
@@ -12,30 +11,38 @@ class objeto{
     image(peluca, 5, 250, 50, 50);
     image(fotos, 150, 325, 50, 50);
     
-    //  Pista Botas
+    // 🥾 Pista Botas
     if (mostrarPista === true){
       fill(255);
-      rect(200, 280, 400, 100);
+      rect(200, 270, 400, 80);   // Sin bordes redondeados
       fill(0);
-      text("El asesino transitó por una zona lodosa", 220, 330);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text("El asesino transitó por una zona lodosa", 400, 310);
     }
     
-    // Pista Fotos
+    // 📸 Pista Fotos
     if (mostrarfotos === true){
       fill(255);
-      rect(200, 280, 400, 100);
+      rect(200, 270, 400, 80);
       fill(0);
-      text("Fotos de la víctima muerta", 220, 330);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text("Fotos de la víctima muerta", 400, 310);
     }
     
-    //  Pista Peluca
+    // 🎭 Pista Peluca
     if (mostrarpeluca === true){
       fill(255);
-      rect(200, 280, 400, 100);
+      rect(200, 270, 400, 80);
       fill(0);
-      text("Una peluca de payaso, pero el payaso real no la usaba", 220, 330);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text("Una peluca de payaso, pero el payaso real no la usaba", 400, 310);
     }
   }
+
+
 
   dibujarLinterna() {
     this.x = constrain(mouseX, 0, width);
