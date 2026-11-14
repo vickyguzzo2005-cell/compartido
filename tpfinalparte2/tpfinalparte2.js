@@ -6,9 +6,11 @@ let tem = new tiempo();
 let mostrarPista = false;
 let mostrarpeluca = false;   
 let mostrarfotos = false;
+let mostrartrampa = false;
+let mostrarguantes = false;
+let mostrarcuchillo = false;
 let elemento = new objeto();
 let intro = new inicio();
-let fini = new finales();
 let eleccion; //  Creamos el objeto de Eleccion
 
 let textoinstrucciones = [
@@ -20,7 +22,7 @@ let textoopciones = [
 ];
 let textofinal = [
   "GANASTE: al descubrir quien fue el verdadero asesino, pudieron identificarlo y atraparlo",
-  "Perdiste: al querer seguir al asesino al bosque, se encontraron con los lobos y su destino fue la muerte"
+  "PERDISTE: al seguir al asesino al bosque, se encontraron con los lobos y los mataron"
 ];
 
 function preload(){
