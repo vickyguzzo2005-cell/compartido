@@ -49,6 +49,33 @@ class objeto{
       textSize(16);
       text("Una peluca de payaso, pero el payaso real no la usaba", 400, 310);
     }
+    //pista trampa
+    if (mostrartrampa === true){
+      fill(255);
+      rect(200, 270, 400, 80);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text("Una trampa para lobos", 400, 310);
+    }
+    //pista guantes
+    if (mostrarguantes === true){
+      fill(255);
+      rect(200, 270, 400, 80);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text("Un par de guantes de cuero", 400, 310);
+    }
+    //pista cuchillo
+    if (mostrarcuchillo === true){
+      fill(255);
+      rect(200, 270, 400, 80);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text("Un cuchillo con restos de sangre fresca", 400, 310);
+    }
   }
 
   dibujarLinterna() {
@@ -81,10 +108,40 @@ class objeto{
       mostrarfotos = false;
       idPista = "peluca";
     }
-    else {
+      else if (mouseX > 400 && mouseX < 450 && mouseY > 200 && mouseY < 250){
+      mostrarpeluca = false;
+      mostrarPista = false;
+      mostrarfotos = false;
+      mostrartrampa = true;
+      mostrarcuchillo = false;
+      mostrarguantes = false;
+      idPista = "trampa";
+    }
+    else if (mouseX > 700 && mouseX < 750 && mouseY > 90 && mouseY < 140){
+      mostrarpeluca = false;
+      mostrarPista = false;
+      mostrarfotos = false;
+      mostrartrampa = true;
+      mostrarcuchillo = true;
+      mostrarguantes = false;
+      idPista = "cuchillo";
+    }
+    else if (mouseX > 200 && mouseX < 250 && mouseY > 50 && mouseY < 100){
+      mostrarpeluca = false;
+      mostrarPista = false;
+      mostrarfotos = false;
+      mostrartrampa = false;
+      mostrarcuchillo = false;
+      mostrarguantes = true;
+      idPista = "guantes";
+    }
+      else {
       mostrarPista = false;
       mostrarfotos = false;
       mostrarpeluca = false;
+      mostrartrampa = false;
+      mostrarcuchillo = false;
+      mostrarguantes = false;
     }
 
     if (idPista !== "" && !this.pistasYaApretadas.includes(idPista)) {
@@ -97,5 +154,8 @@ class objeto{
     mostrarPista = false;
     mostrarfotos = false;
     mostrarpeluca = false;
+    mostrartrampa = false;
+     mostrarcuchillo = false;
+     mostrarguantes = false;
   }
 }
