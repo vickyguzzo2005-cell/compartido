@@ -2,8 +2,20 @@ class objeto{
   constructor(x, y){
     this.x = x;
     this.y = y;
+    this.pistasEncontradas = 0;
+    this.pistasYaApretadas = [];
   }
-    dibujar(){
+
+  hayTodasLasPistas() {
+    return this.pistasEncontradas >= 3;
+  }
+
+  reiniciar() {
+    this.pistasEncontradas = 0;
+    this.pistasYaApretadas = [];
+  }
+
+  dibujar(){
     image(botas, 510, 300, 50, 50);
     image(cuchillo, 700, 90, 50, 50);
     image(trampa, 400, 200, 50, 50);
@@ -11,17 +23,15 @@ class objeto{
     image(peluca, 5, 250, 50, 50);
     image(fotos, 150, 325, 50, 50);
     
-    // 🥾 Pista Botas
     if (mostrarPista === true){
       fill(255);
-      rect(200, 270, 400, 80);   // Sin bordes redondeados
+      rect(200, 270, 400, 80);
       fill(0);
       textAlign(CENTER, CENTER);
       textSize(16);
       text("El asesino transitó por una zona lodosa", 400, 310);
     }
     
-    // 📸 Pista Fotos
     if (mostrarfotos === true){
       fill(255);
       rect(200, 270, 400, 80);
@@ -31,7 +41,6 @@ class objeto{
       text("Fotos de la víctima muerta", 400, 310);
     }
     
-    // 🎭 Pista Peluca
     if (mostrarpeluca === true){
       fill(255);
       rect(200, 270, 400, 80);
@@ -40,36 +49,7 @@ class objeto{
       textSize(16);
       text("Una peluca de payaso, pero el payaso real no la usaba", 400, 310);
     }
-       //pista trampa
-    if (mostrartrampa === true){
-      fill(255);
-      rect(200, 270, 400, 80);
-      fill(0);
-      textAlign(CENTER, CENTER);
-      textSize(16);
-      text("Una trampa para lobos", 400, 310);
-    }
-    //pista guantes
-    if (mostrarguantes === true){
-      fill(255);
-      rect(200, 270, 400, 80);
-      fill(0);
-      textAlign(CENTER, CENTER);
-      textSize(16);
-      text("Un par de guantes de cuero", 400, 310);
-    }
-    //pista cuchillo
-    if (mostrarcuchillo === true){
-      fill(255);
-      rect(200, 270, 400, 80);
-      fill(0);
-      textAlign(CENTER, CENTER);
-      textSize(16);
-      text("Un cuchillo con restos de sangre fresca", 400, 310);
-    }
   }
-
-
 
   dibujarLinterna() {
     this.x = constrain(mouseX, 0, width);
@@ -81,76 +61,41 @@ class objeto{
   }
 
   mousePressed(){
-    // Botas
+    let idPista = "";
+
     if (mouseX > 510 && mouseX < 560 && mouseY > 300 && mouseY < 350){
       mostrarPista = true;
       mostrarfotos = false;
       mostrarpeluca = false;
-       mostrartrampa = false;
-      mostrarguantes = false;
-      mostrarcuchillo = false;
+      idPista = "botas";
     }
-
-    // Fotos
-    if (mouseX > 150 && mouseX < 200 && mouseY > 325 && mouseY < 375){
+    else if (mouseX > 150 && mouseX < 200 && mouseY > 325 && mouseY < 375){
       mostrarfotos = true;
       mostrarPista = false;
       mostrarpeluca = false;
-       mostrartrampa = false;
-      mostrarguantes = false;
-      mostrarcuchillo = false;
+      idPista = "fotos";
     }
-
-    //  Peluca
-    if (mouseX > 5 && mouseX < 55 && mouseY > 250 && mouseY < 300){
-      console.log("¡Hiciste clic en la peluca!");
+    else if (mouseX > 5 && mouseX < 55 && mouseY > 250 && mouseY < 300){
       mostrarpeluca = true;
       mostrarPista = false;
       mostrarfotos = false;
-       mostrartrampa = false;
-      mostrarguantes = false;
-      mostrarcuchillo = false;
-      
+      idPista = "peluca";
     }
-
-    //  Cuchillo
-    if (mouseX > 700 && mouseX < 750 && mouseY > 90 && mouseY < 140){
+    else {
       mostrarPista = false;
       mostrarfotos = false;
       mostrarpeluca = false;
-     mostrartrampa = false;
-      mostrarguantes = false;
-      mostrarcuchillo = true;
     }
 
-    // Trampa
-    if (mouseX > 400 && mouseX < 450 && mouseY > 200 && mouseY < 250){
-      mostrarPista = false;
-      mostrarfotos = false;
-      mostrarpeluca = false;
-       mostrartrampa = true;
-      mostrarguantes = false;
-      mostrarcuchillo = false;
-    }
-
-    //  Guantes
-    if (mouseX > 200 && mouseX < 250 && mouseY > 50 && mouseY < 100){
-      mostrarPista = false;
-      mostrarfotos = false;
-      mostrarpeluca = false;
-       mostrartrampa = false;
-      mostrarguantes = true;
-      mostrarcuchillo = false;
+    if (idPista !== "" && !this.pistasYaApretadas.includes(idPista)) {
+      this.pistasYaApretadas.push(idPista);
+      this.pistasEncontradas++;
     }
   }
 
   mouseReleased(){
-    // Al soltar el mouse, TODOS los carteles desaparecen
     mostrarPista = false;
     mostrarfotos = false;
     mostrarpeluca = false;
-     mostrartrampa = false;
-    mostrarguantes = false;
-    mostrarcuchillo = false;
   }
 }
