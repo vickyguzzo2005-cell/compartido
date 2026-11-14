@@ -125,16 +125,16 @@ class Eleccion {
       textSize(16);
       text("¿Cuál es tu conclusión?", 400, 170);
       
-      fill(100, 200, 100);
+      fill(106, 100, 198);
       rect(130, 200, 540, 50);
       fill(0);
-      textSize(13);
+      textSize(14);
       text(textoopciones[0], 400, 225);
       
-      fill(220, 100, 100);
+      fill(106, 100, 198);
       rect(130, 270, 540, 50);
       fill(0);
-      textSize(13);
+      textSize(14);
       text(textoopciones[1], 400, 295);
     } 
     else {
