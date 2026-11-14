@@ -40,6 +40,33 @@ class objeto{
       textSize(16);
       text("Una peluca de payaso, pero el payaso real no la usaba", 400, 310);
     }
+       //pista trampa
+    if (mostrartrampa === true){
+      fill(255);
+      rect(200, 270, 400, 80);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text("Una trampa para lobos", 400, 310);
+    }
+    //pista guantes
+    if (mostrarguantes === true){
+      fill(255);
+      rect(200, 270, 400, 80);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text("Un par de guantes de cuero", 400, 310);
+    }
+    //pista cuchillo
+    if (mostrarcuchillo === true){
+      fill(255);
+      rect(200, 270, 400, 80);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text("Un cuchillo con restos de sangre fresca", 400, 310);
+    }
   }
 
 
@@ -59,6 +86,9 @@ class objeto{
       mostrarPista = true;
       mostrarfotos = false;
       mostrarpeluca = false;
+       mostrartrampa = false;
+      mostrarguantes = false;
+      mostrarcuchillo = false;
     }
 
     // Fotos
@@ -66,6 +96,9 @@ class objeto{
       mostrarfotos = true;
       mostrarPista = false;
       mostrarpeluca = false;
+       mostrartrampa = false;
+      mostrarguantes = false;
+      mostrarcuchillo = false;
     }
 
     //  Peluca
@@ -74,6 +107,9 @@ class objeto{
       mostrarpeluca = true;
       mostrarPista = false;
       mostrarfotos = false;
+       mostrartrampa = false;
+      mostrarguantes = false;
+      mostrarcuchillo = false;
       
     }
 
@@ -82,6 +118,9 @@ class objeto{
       mostrarPista = false;
       mostrarfotos = false;
       mostrarpeluca = false;
+     mostrartrampa = false;
+      mostrarguantes = false;
+      mostrarcuchillo = true;
     }
 
     // Trampa
@@ -89,6 +128,9 @@ class objeto{
       mostrarPista = false;
       mostrarfotos = false;
       mostrarpeluca = false;
+       mostrartrampa = true;
+      mostrarguantes = false;
+      mostrarcuchillo = false;
     }
 
     //  Guantes
@@ -96,6 +138,9 @@ class objeto{
       mostrarPista = false;
       mostrarfotos = false;
       mostrarpeluca = false;
+       mostrartrampa = false;
+      mostrarguantes = true;
+      mostrarcuchillo = false;
     }
   }
 
@@ -104,5 +149,8 @@ class objeto{
     mostrarPista = false;
     mostrarfotos = false;
     mostrarpeluca = false;
+     mostrartrampa = false;
+    mostrarguantes = false;
+    mostrarcuchillo = false;
   }
 }
