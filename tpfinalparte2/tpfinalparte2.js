@@ -89,6 +89,9 @@ function keyPressed(){
     mostrarPista = false;
     mostrarpeluca = false;
     mostrarfotos = false;
+    mostrartrampa = false;
+    mostrarcuchillo = false;
+    mostrarguantes = false;
     elemento.reiniciar();   //  Reiniciamos el contador de pistas
     eleccion.reiniciar();   // Ocultamos el cuadro de opciones
   }
