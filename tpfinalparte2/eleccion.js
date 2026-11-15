@@ -22,12 +22,12 @@ class Eleccion {
       text("¡Encontraste todas las pistas!", 400, 140);
       textSize(16);
       text("¿Cuál es tu conclusión?", 400, 170);
-      fill(100, 200, 100);
+      fill(174, 54, 255);
       rect(130, 200, 540, 50);
       fill(0);
       textSize(13);
       text(textoopciones[0], 400, 225);
-      fill(220, 100, 100);
+      fill(174, 54, 255);
       rect(130, 270, 540, 50);
       fill(0);
       textSize(13);
