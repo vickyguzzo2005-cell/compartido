@@ -49,7 +49,6 @@ class objeto{
       textSize(16);
       text("Una peluca de payaso, pero el payaso real no la usaba", 400, 310);
     }
-    //pista trampa
     if (mostrartrampa === true){
       fill(255);
       rect(200, 270, 400, 80);
@@ -58,16 +57,6 @@ class objeto{
       textSize(16);
       text("Una trampa para lobos", 400, 310);
     }
-    //pista guantes
-    if (mostrarguantes === true){
-      fill(255);
-      rect(200, 270, 400, 80);
-      fill(0);
-      textAlign(CENTER, CENTER);
-      textSize(16);
-      text("Un par de guantes de cuero", 400, 310);
-    }
-    //pista cuchillo
     if (mostrarcuchillo === true){
       fill(255);
       rect(200, 270, 400, 80);
@@ -75,6 +64,14 @@ class objeto{
       textAlign(CENTER, CENTER);
       textSize(16);
       text("Un cuchillo con restos de sangre fresca", 400, 310);
+    }
+    if (mostrarguantes === true){
+      fill(255);
+      rect(200, 270, 400, 80);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text("Un par de guantes de cuero", 400, 310);
     }
   }
 
@@ -94,21 +91,30 @@ class objeto{
       mostrarPista = true;
       mostrarfotos = false;
       mostrarpeluca = false;
+      mostrartrampa = false;
+      mostrarcuchillo = false;
+      mostrarguantes = false;
       idPista = "botas";
     }
     else if (mouseX > 150 && mouseX < 200 && mouseY > 325 && mouseY < 375){
       mostrarfotos = true;
       mostrarPista = false;
       mostrarpeluca = false;
+      mostrartrampa = false;
+      mostrarcuchillo = false;
+      mostrarguantes = false;
       idPista = "fotos";
     }
     else if (mouseX > 5 && mouseX < 55 && mouseY > 250 && mouseY < 300){
       mostrarpeluca = true;
       mostrarPista = false;
       mostrarfotos = false;
+      mostrartrampa = false;
+      mostrarcuchillo = false;
+      mostrarguantes = false;
       idPista = "peluca";
     }
-      else if (mouseX > 400 && mouseX < 450 && mouseY > 200 && mouseY < 250){
+    else if (mouseX > 400 && mouseX < 450 && mouseY > 200 && mouseY < 250){
       mostrarpeluca = false;
       mostrarPista = false;
       mostrarfotos = false;
@@ -121,7 +127,7 @@ class objeto{
       mostrarpeluca = false;
       mostrarPista = false;
       mostrarfotos = false;
-      mostrartrampa = true;
+      mostrartrampa = false;
       mostrarcuchillo = true;
       mostrarguantes = false;
       idPista = "cuchillo";
@@ -135,7 +141,7 @@ class objeto{
       mostrarguantes = true;
       idPista = "guantes";
     }
-      else {
+    else {
       mostrarPista = false;
       mostrarfotos = false;
       mostrarpeluca = false;
@@ -155,7 +161,7 @@ class objeto{
     mostrarfotos = false;
     mostrarpeluca = false;
     mostrartrampa = false;
-     mostrarcuchillo = false;
-     mostrarguantes = false;
+    mostrarcuchillo = false;
+    mostrarguantes = false;
   }
 }
