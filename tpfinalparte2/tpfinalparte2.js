@@ -37,6 +37,7 @@ function preload(){
   trampa = loadImage("assets/trampa.png");
   peluca = loadImage("assets/peluca.png");
   fotos = loadImage("assets/fotos.png");
+   musicaSuspenso = loadSound("assets/suspenso.mp3");
 }
 
 function setup() {
