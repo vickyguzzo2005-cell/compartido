@@ -1,3 +1,4 @@
+
 let velocidadAnimacion = 90;
 let tiempo;
 let fondo;
@@ -42,14 +43,19 @@ let seleccion;
 let fondobosque;
 let fondoCabana;
 let fondoActual;
+let llegaronDestinoDerecha = false;
+let posicionLimiteDerecha = 3000;
 
 let caminoElegido = false;
+
+// NUEVA VARIABLE: cuenta las vueltas de la caminata
+let vueltasCaminata = 0;
 
 let personaje = ["Pandilla", "Fred", "Daphne"];
 
 let textoPandilla = [
   "¿Qué ocurrió?",
-  "Disculpe señor, ¿Usted sabe algo de lo que ocurrió?",
+  "Disculpa fred, ¿Usted sabe algo de lo que ocurrió?",
   "Vimos algo raro, vamos a investigar juntos"
 ];
 
@@ -115,7 +121,6 @@ function draw() {
   image(fondoActual, -desplazamiento, 0, 800, 600);
   image(fondoActual, -desplazamiento + 800, 0, 800, 600);
 
-  
   if (aparecefred && !caminoElegido) {
     image(imagenesfred[0], posicionxfred, 250, 160, 200);
   }
@@ -124,7 +129,6 @@ function draw() {
     image(imagenesdaphne[0], posicionxdaphne, 250, 160, 200);
   }
 
-  
   if (posicionxscoby > 900 && !aparecedaphne && !mostrarOpciones && !caminoElegido && !aparecefred) {
     aparecefred = true;
     posicionx = -100;
@@ -167,7 +171,8 @@ function draw() {
 
   tiempo = millis() / 250;
 
-  if (!detenerse && !detenidodaphne && !mostrarOpciones) {
+  // Movimiento de Shaggy
+  if (!detenerse && !detenidodaphne && !mostrarOpciones && !llegaronDestinoDerecha && (!caminoElegido || caminandoDespuesDaphne)) {
     indiceshagy = floor(tiempo) % 9;
     posicionx = posicionx + velocidadcaminar;
   } else {
@@ -176,9 +181,10 @@ function draw() {
 
   image(imagenesdeshagy[indiceshagy], posicionx, 250, 150, 200);
 
+  // Movimiento de Velma
   tiempovelma = millis() / 260;
 
-  if (!detenerse && !detenidodaphne && !mostrarOpciones) {
+  if (!detenerse && !detenidodaphne && !mostrarOpciones && !llegaronDestinoDerecha && (!caminoElegido || caminandoDespuesDaphne)) {
     indicevelma = floor(tiempovelma) % 8;
     posicionxvelma = posicionxvelma + velocidadcaminarvelma;
   } else {
@@ -187,9 +193,10 @@ function draw() {
 
   image(imagenesdevelma[indicevelma], posicionxvelma, 250, 160, 201);
 
+  // Movimiento de Scooby
   tiemposcoby = millis() / 250;
 
-  if (!detenerse && !detenidodaphne && !mostrarOpciones) {
+  if (!detenerse && !detenidodaphne && !mostrarOpciones && !llegaronDestinoDerecha && (!caminoElegido || caminandoDespuesDaphne)) {
     indicescoby = floor(tiemposcoby) % 9;
     posicionxscoby = posicionxscoby + velocidaddescoby;
   } else {
@@ -203,7 +210,7 @@ function draw() {
     dibujarCajaDeTexto();
   }
 
-  if (caminandoDespuesDaphne && posicionx > 650) {
+  if (caminandoDespuesDaphne && posicionx > 650 && !caminoElegido) {
     caminandoDespuesDaphne = false;
     mostrarOpciones = true;
     sePuedeElegir = true;
@@ -223,6 +230,28 @@ function draw() {
     text("ir a la izquierda", 400, 200);
     text("ir a la derecha", 400, 260);
     textAlign(LEFT);
+  }
+
+  // REPETICIÓN DE LA CAMINATA
+
+  if (caminoElegido && caminandoDespuesDaphne) {
+
+    // Primera vuelta: vuelven a aparecer desde la izquierda
+    if (vueltasCaminata == 0 && posicionx > 850) {
+
+      posicionx = -100;
+      posicionxvelma = -180;
+      posicionxscoby = -260;
+
+      vueltasCaminata = 1;
+    }
+
+    // Segunda vuelta: se detienen después de caminar unos pasos
+    else if (vueltasCaminata == 1 && posicionx > 150) {
+
+      caminandoDespuesDaphne = false;
+
+    }
   }
 }
 
@@ -346,13 +375,20 @@ function mousePressed() {
   }
 
   if (mostrarOpciones && sePuedeElegir) {
+
+    // ELECCIÓN DE LA IZQUIERDA
     if (mouseX > 220 && mouseX < 580 && mouseY > 170 && mouseY < 230) {
       seleccion = "izquierda";
       fondoActual = fondobosque;
 
-      
       aparecefred = false;
       caminoElegido = true;
+      caminandoDespuesDaphne = true;
+      vueltasCaminata = 0;
+
+      posicionx = -100;
+      posicionxvelma = -180;
+      posicionxscoby = -260;
 
       musicaCirco.stop();
       musicabosque.loop();
@@ -360,13 +396,21 @@ function mousePressed() {
       sePuedeElegir = false;
     }
 
+    // ELECCIÓN DE LA DERECHA
     else if (mouseX > 220 && mouseX < 580 && mouseY > 230 && mouseY < 290) {
       seleccion = "derecha";
       fondoActual = fondoCabana;
 
-   
       aparecefred = false;
       caminoElegido = true;
+      caminandoDespuesDaphne = true;
+      vueltasCaminata = 0;
+
+      llegaronDestinoDerecha = false;
+
+      posicionx = -100;
+      posicionxvelma = -180;
+      posicionxscoby = -260;
 
       musicaCirco.stop();
       musicabosque.loop();
@@ -381,3 +425,6 @@ function keyPressed() {
     musicaCirco.loop();
   }
 }
+{
+
+
