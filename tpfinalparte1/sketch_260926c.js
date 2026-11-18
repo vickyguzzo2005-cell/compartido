@@ -251,6 +251,53 @@ function draw() {
 
       caminandoDespuesDaphne = false;
 
+    }if(llegaronDestinoDerecha = true){ //final 1
+    seleccion = "derecha"
+    llegaronDestinoIzquierda = false;
+    
+     stroke(255);
+    strokeWeight(3);
+    fill(40, 20, 60, 230);
+    rect(180, 100, 440, 80, 20);
+    noStroke();
+    fill(255);
+    textSize(22);
+    textAlign(CENTER);
+    text("Final uno: llegaron a la guarida del asesino", 400, 140);
+    
+    stroke(255);
+    strokeWeight(3);
+    fill(40, 20, 60, 230);
+    rect(180, 200, 440, 100, 20);
+    noStroke();
+    fill(255);
+    textSize(20);
+    text("Echo por Julieta Martinez y Victoria Guzzo", 400, 230);
+    text("Comision: 2", 400, 270);
+    
+    } if(llegaronDestinoIzquierda = true){  //final 2
+    seleccion = "izquierda"
+     llegaronDestinoDerecha = false;
+      
+     stroke(255);
+    strokeWeight(3);
+    fill(40, 20, 60, 230);
+    rect(160, 100, 480, 80, 20);
+    noStroke();
+    fill(255);
+    textSize(22);
+    textAlign(CENTER);
+    text("Final dos: Se escontraron con lobos y murieron", 400, 140);
+    
+     stroke(255);
+    strokeWeight(3);
+    fill(40, 20, 60, 230);
+    rect(180, 200, 440, 100, 20);
+    noStroke();
+    fill(255);
+    textSize(20);
+    text("Hecho por Julieta Martinez y Victoria Guzzo", 400, 230);
+    text("Comision: 2", 400, 270);
     }
   }
 }
@@ -425,6 +472,6 @@ function keyPressed() {
     musicaCirco.loop();
   }
 }
-{
+
 
 
