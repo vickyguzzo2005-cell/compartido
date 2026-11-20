@@ -2,6 +2,7 @@
 let velocidadAnimacion = 90;
 let tiempo;
 let fondo;
+let pantalladeinicio;
 let desplazamiento;
 let imagenesdeshagy = [];
 let indiceshagy = 0;
@@ -44,11 +45,12 @@ let fondobosque;
 let fondoCabana;
 let fondoActual;
 let llegaronDestinoDerecha = false;
+let llegaronDestinoIzquierda = false;
+let mostrarFinal = false;
+let mostrarCreditos = false;
+let mostrarInicio = true;
 let posicionLimiteDerecha = 3000;
-
 let caminoElegido = false;
-
-// NUEVA VARIABLE: cuenta las vueltas de la caminata
 let vueltasCaminata = 0;
 
 let personaje = ["Pandilla", "Fred", "Daphne"];
@@ -73,6 +75,7 @@ let textoDaf = [
 
 function preload() {
   fondo = loadImage('assets/fondoferia.png');
+  pantalladeinicio = loadImage('assets/pantalladeinicio.jpg');
 
   for (let i = 0; i < 9; i++) {
     imagenesdeshagy[i] = loadImage('assets/shagy' + (i + 1) + '.png');
@@ -101,21 +104,33 @@ function preload() {
 function setup() {
   createCanvas(800, 450);
   textSize(20);
-  frameHistoria = 0;
-  hablaPandilla = true;
-  hablaFred = false;
-  hablaDaf = false;
-  textoAPandilla = 0;
-  textoAFred = 0;
-  textoADaf = 0;
-  minTexto = 0;
-  maxTexto = 0;
-  sePuedeElegir = false;
+  reiniciarJuego();
+  mostrarInicio = true;
 }
 
 function draw() {
-  console.log("frameHistoria vale:", frameHistoria);
   background(0);
+
+  if (mostrarInicio) {
+    image(pantalladeinicio, 0, 0, 800, 450);
+
+    stroke(255);
+    strokeWeight(3);
+    fill(40, 20, 60, 230);
+    rect(300, 330, 200, 65, 15);
+
+    noStroke();
+    fill(255);
+    textSize(25);
+    textAlign(CENTER);
+    text("INICIAR", 400, 371);
+    textAlign(LEFT);
+
+    return;
+  }
+
+  console.log("frameHistoria vale:", frameHistoria);
+
   let desplazamiento = (millis() / velocidadAnimacion) % 800;
 
   image(fondoActual, -desplazamiento, 0, 800, 600);
@@ -171,8 +186,7 @@ function draw() {
 
   tiempo = millis() / 250;
 
-  // Movimiento de Shaggy
-  if (!detenerse && !detenidodaphne && !mostrarOpciones && !llegaronDestinoDerecha && (!caminoElegido || caminandoDespuesDaphne)) {
+  if (!detenerse && !detenidodaphne && !mostrarOpciones && !llegaronDestinoDerecha && !llegaronDestinoIzquierda && (!caminoElegido || caminandoDespuesDaphne)) {
     indiceshagy = floor(tiempo) % 9;
     posicionx = posicionx + velocidadcaminar;
   } else {
@@ -181,10 +195,9 @@ function draw() {
 
   image(imagenesdeshagy[indiceshagy], posicionx, 250, 150, 200);
 
-  // Movimiento de Velma
   tiempovelma = millis() / 260;
 
-  if (!detenerse && !detenidodaphne && !mostrarOpciones && !llegaronDestinoDerecha && (!caminoElegido || caminandoDespuesDaphne)) {
+  if (!detenerse && !detenidodaphne && !mostrarOpciones && !llegaronDestinoDerecha && !llegaronDestinoIzquierda && (!caminoElegido || caminandoDespuesDaphne)) {
     indicevelma = floor(tiempovelma) % 8;
     posicionxvelma = posicionxvelma + velocidadcaminarvelma;
   } else {
@@ -193,10 +206,9 @@ function draw() {
 
   image(imagenesdevelma[indicevelma], posicionxvelma, 250, 160, 201);
 
-  // Movimiento de Scooby
   tiemposcoby = millis() / 250;
 
-  if (!detenerse && !detenidodaphne && !mostrarOpciones && !llegaronDestinoDerecha && (!caminoElegido || caminandoDespuesDaphne)) {
+  if (!detenerse && !detenidodaphne && !mostrarOpciones && !llegaronDestinoDerecha && !llegaronDestinoIzquierda && (!caminoElegido || caminandoDespuesDaphne)) {
     indicescoby = floor(tiemposcoby) % 9;
     posicionxscoby = posicionxscoby + velocidaddescoby;
   } else {
@@ -232,74 +244,76 @@ function draw() {
     textAlign(LEFT);
   }
 
-  // REPETICIÓN DE LA CAMINATA
-
   if (caminoElegido && caminandoDespuesDaphne) {
-
-    // Primera vuelta: vuelven a aparecer desde la izquierda
     if (vueltasCaminata == 0 && posicionx > 850) {
-
       posicionx = -100;
       posicionxvelma = -180;
       posicionxscoby = -260;
-
       vueltasCaminata = 1;
     }
-
-    // Segunda vuelta: se detienen después de caminar unos pasos
     else if (vueltasCaminata == 1 && posicionx > 150) {
-
       caminandoDespuesDaphne = false;
 
-    }if(llegaronDestinoDerecha = true){ //final 1
-    seleccion = "derecha"
-    llegaronDestinoIzquierda = false;
-    
-     stroke(255);
-    strokeWeight(3);
-    fill(40, 20, 60, 230);
-    rect(180, 100, 440, 80, 20);
-    noStroke();
-    fill(255);
-    textSize(22);
-    textAlign(CENTER);
-    text("Final uno: llegaron a la guarida del asesino", 400, 140);
-    
+      if (seleccion == "derecha") {
+        llegaronDestinoDerecha = true;
+        llegaronDestinoIzquierda = false;
+      }
+
+      if (seleccion == "izquierda") {
+        llegaronDestinoIzquierda = true;
+        llegaronDestinoDerecha = false;
+      }
+
+      mostrarFinal = true;
+    }
+  }
+
+  if (mostrarFinal && !mostrarCreditos) {
     stroke(255);
     strokeWeight(3);
     fill(40, 20, 60, 230);
-    rect(180, 200, 440, 100, 20);
-    noStroke();
-    fill(255);
-    textSize(20);
-    text("Echo por Julieta Martinez y Victoria Guzzo", 400, 230);
-    text("Comision: 2", 400, 270);
-    
-    } if(llegaronDestinoIzquierda = true){  //final 2
-    seleccion = "izquierda"
-     llegaronDestinoDerecha = false;
-      
-     stroke(255);
-    strokeWeight(3);
-    fill(40, 20, 60, 230);
-    rect(160, 100, 480, 80, 20);
+    rect(140, 150, 520, 130, 20);
+
     noStroke();
     fill(255);
     textSize(22);
     textAlign(CENTER);
-    text("Final dos: Se escontraron con lobos y murieron", 400, 140);
-    
-     stroke(255);
+
+    if (seleccion == "derecha") {
+      text("Final uno: llegaron a la guarida del asesino", 400, 220);
+    }
+
+    if (seleccion == "izquierda") {
+      text("Final dos: se encontraron con lobos y murieron", 400, 220);
+    }
+
+    textSize(16);
+    text("Hacé clic para continuar", 400, 250);
+  }
+
+  if (mostrarCreditos) {
+    background(0);
+    fill(255);
+    textAlign(CENTER);
+    textSize(32);
+    text("CRÉDITOS", 400, 150);
+
+    textSize(22);
+    text("Hecho por Julieta Martinez y Victoria Guzzo", 400, 220);
+    text("Comisión: 2", 400, 270);
+
+    stroke(255);
     strokeWeight(3);
     fill(40, 20, 60, 230);
-    rect(180, 200, 440, 100, 20);
+    rect(275, 330, 250, 60, 15);
+
     noStroke();
     fill(255);
     textSize(20);
-    text("Hecho por Julieta Martinez y Victoria Guzzo", 400, 230);
-    text("Comision: 2", 400, 270);
-    }
+    text("VOLVER AL INICIO", 400, 367);
   }
+
+  textAlign(LEFT);
 }
 
 function momentoEnLaHistoria() {
@@ -401,6 +415,28 @@ function dibujarCajaDeTexto() {
 }
 
 function mousePressed() {
+  if (mostrarInicio) {
+    if (mouseX > 300 && mouseX < 500 && mouseY > 330 && mouseY < 395) {
+      reiniciarJuego();
+      mostrarInicio = false;
+    }
+    return;
+  }
+
+  if (mostrarFinal && !mostrarCreditos) {
+    mostrarFinal = false;
+    mostrarCreditos = true;
+    return;
+  }
+
+  if (mostrarCreditos) {
+    if (mouseX > 275 && mouseX < 525 && mouseY > 330 && mouseY < 390) {
+      reiniciarJuego();
+      mostrarInicio = true;
+    }
+    return;
+  }
+
   if (detenerse || detenidodaphne) {
     if (!sePuedeElegir) return;
 
@@ -422,8 +458,6 @@ function mousePressed() {
   }
 
   if (mostrarOpciones && sePuedeElegir) {
-
-    // ELECCIÓN DE LA IZQUIERDA
     if (mouseX > 220 && mouseX < 580 && mouseY > 170 && mouseY < 230) {
       seleccion = "izquierda";
       fondoActual = fondobosque;
@@ -432,6 +466,10 @@ function mousePressed() {
       caminoElegido = true;
       caminandoDespuesDaphne = true;
       vueltasCaminata = 0;
+      llegaronDestinoDerecha = false;
+      llegaronDestinoIzquierda = false;
+      mostrarFinal = false;
+      mostrarCreditos = false;
 
       posicionx = -100;
       posicionxvelma = -180;
@@ -443,7 +481,6 @@ function mousePressed() {
       sePuedeElegir = false;
     }
 
-    // ELECCIÓN DE LA DERECHA
     else if (mouseX > 220 && mouseX < 580 && mouseY > 230 && mouseY < 290) {
       seleccion = "derecha";
       fondoActual = fondoCabana;
@@ -452,8 +489,10 @@ function mousePressed() {
       caminoElegido = true;
       caminandoDespuesDaphne = true;
       vueltasCaminata = 0;
-
       llegaronDestinoDerecha = false;
+      llegaronDestinoIzquierda = false;
+      mostrarFinal = false;
+      mostrarCreditos = false;
 
       posicionx = -100;
       posicionxvelma = -180;
@@ -467,11 +506,56 @@ function mousePressed() {
   }
 }
 
+function reiniciarJuego() {
+  musicaCirco.stop();
+  musicabosque.stop();
+
+  fondoActual = fondo;
+
+  indiceshagy = 0;
+  posicionx = -100;
+  indicevelma = 0;
+  posicionxvelma = -180;
+  indicescoby = 0;
+  posicionxscoby = -260;
+
+  posicionxdaphne = 650;
+  aparecedaphne = false;
+  detenidodaphne = false;
+
+  posicionxfred = 600;
+  aparecefred = false;
+  detenerse = false;
+
+  frameHistoria = 0;
+  hablaPandilla = true;
+  hablaFred = false;
+  hablaDaf = false;
+
+  textoAPandilla = 0;
+  textoAFred = 0;
+  textoADaf = 0;
+  minTexto = 0;
+  maxTexto = 0;
+
+  sePuedeElegir = false;
+  mostrarOpciones = false;
+  caminandoDespuesDaphne = false;
+
+  seleccion = "";
+  llegaronDestinoDerecha = false;
+  llegaronDestinoIzquierda = false;
+
+  mostrarFinal = false;
+  mostrarCreditos = false;
+
+  caminoElegido = false;
+  vueltasCaminata = 0;
+}
+
 function keyPressed() {
-  if (key == 'p') {
+  if (key == 'p' && !mostrarInicio) {
     musicaCirco.loop();
   }
 }
-
-
 
